@@ -57,7 +57,9 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest -v            # Runs all tests in 'tests/' folder
+        run: |
+         export PYTHONPATH=$PYTHONPATH:$(pwd)
+          pytest -v            # Runs all tests in 'tests/' folder
 
   docker:
     name:  Build & Push Docker Image
