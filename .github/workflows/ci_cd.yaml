@@ -61,6 +61,21 @@ jobs:
          export PYTHONPATH=$PYTHONPATH:$(pwd)
           pytest -v            # Runs all tests in 'tests/' folder
 
+
+
+      - name: Check if secrets exist
+        run: |
+          if [ -z "${{ secrets.DOCKERHUB_USERNAME }}" ]; then
+            echo "❌ Username secret missing"
+          else
+            echo "✅ Username secret found"
+          fi
+          if [ -z "${{ secrets.DOCKERHUB_PASSWORD }}" ]; then
+            echo "❌ Password secret missing"
+          else
+            echo "✅ Password secret found"
+          fi
+
   docker:
     name:  Build & Push Docker Image
     runs-on: ubuntu-latest
