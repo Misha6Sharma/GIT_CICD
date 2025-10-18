@@ -83,5 +83,5 @@ jobs:
         with:
           context: .               # Build context (root of repo)
           file: ./Dockerfile       # Dockerfile location
-          push: true               # Push image to Docker Hubb
+          push: true               # Push image to Docker Hub
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/iris-api:latest
